@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机名言生成器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        #quote {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        #author {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="quote"></div>
+        <div id="author"></div>
+        <button onclick="getNewQuote()">换一句名言</button>
+    </div>
+
+    <script>
+        const quoteList = [
+            {text:"道阻且长，行则将至", author:"《荀子》"},
+            {text:"千里之行，始于足下", author:"老子"},
+            {text:"长风破浪会有时，直挂云帆济沧海", author:"李白"},
+            {text:"路漫漫其修远兮，吾将上下而求索", author:"屈原"},
+            {text:"业精于勤，荒于嬉", author:"韩愈"}
+        ];
+        const quoteDom = document.getElementById("quote");
+        const authorDom = document.getElementById("author");
+
+        function getNewQuote(){
+            const random = Math.floor(Math.random() * quoteList.length);
+            quoteDom.innerText = quoteList[random].text;
+            authorDom.innerText = "——" + quoteList[random].author;
+        }
+        // 页面加载自动显示一句
+        getNewQuote();
+    </script>
+</body>
+</html>
